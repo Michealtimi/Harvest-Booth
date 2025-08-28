@@ -1,10 +1,21 @@
-// scripts/make-qr.js
-import QRCode from "qrcode";
-import dotenv from "dotenv";
-dotenv.config();
+// scripts/makeqr.js
+// Generates a QR code that anyone can scan on their phone.
+// For testing, pass in your ngrok or localhost URL.
 
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/booth/ile-adura-2025`;
-QRCode.toFile("qr-ile-adura-2025.png", url, { width: 800 }, function (err) {
+const QRCode = require("qrcode");
+
+// 1. Take the URL from arguments or default to localhost
+const url = process.argv[2] || "http://localhost:3000";
+
+// 2. Print QR in terminal (ASCII style)
+QRCode.toString(url, { type: "terminal" }, (err, qr) => {
   if (err) throw err;
-  console.log("QR file saved to qr-ile-adura-2025.png");
+  console.log("📱 Scan this QR in your phone camera:\n");
+  console.log(qr);
+});
+
+// 3. Save a PNG version in /public (so your Next.js app can serve it)
+QRCode.toFile("public/qr.png", url, (err) => {
+  if (err) throw err;
+  console.log(`✅ QR code saved at public/qr.png for: ${url}`);
 });

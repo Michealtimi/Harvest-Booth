@@ -50,7 +50,7 @@ export default function HomePage() {
   return (
     <div className="max-w-xl mx-auto text-center">
       <h2 className="text-xl font-semibold mb-4">
-        Upload your photo to join the Harvest Festival 🎊
+        Upload your photo to join the Harvest Festival Booth 🎊
       </h2>
 
       <input
