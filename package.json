@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "start:dev": "yarn dev"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
@@ -17,7 +18,8 @@
     "qrcode": "^1.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-webcam": "^7.2.0"
+    "react-webcam": "^7.2.0",
+    "replicate": "^1.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

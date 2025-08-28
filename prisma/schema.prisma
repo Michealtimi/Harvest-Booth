@@ -10,10 +10,10 @@ datasource db {
 model Job {
   id        String   @id @default(uuid())
   eventId   String
-  inputUrl  String?
-  outputUrl String?
+  inputUrl  String? // nullable → job may not yet have input
+  outputUrl String? // nullable → job may not yet have output
   status    String   @default("pending") // pending | processing | done | failed
-  prompt    String?
+  prompt    String? // nullable → may not be provided initially
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
