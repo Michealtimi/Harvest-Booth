@@ -2,10 +2,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image"; // Import Image component
 
 export default function HomePage() {
   const [file, setFile] = useState<File | null>(null);
-  const [jobId, setJobId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
 
@@ -22,7 +22,6 @@ export default function HomePage() {
 
     const data = await res.json();
     if (data.success) {
-      setJobId(data.jobId);
       pollStatus(data.jobId);
     } else {
       alert(data.error || "Upload failed");
@@ -76,7 +75,9 @@ export default function HomePage() {
       {outputUrl && (
         <div className="mt-6">
           <h3 className="font-semibold mb-2">Your Cartoon Harvest Photo 🎨</h3>
-          <img
+          <Image
+            width={500} // Specify a width
+            height={300} // Specify a height
             src={outputUrl}
             alt="Cartoonized Harvest"
             className="rounded-xl shadow-lg"
